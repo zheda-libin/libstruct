@@ -8,7 +8,7 @@
 using namespace link_list;
 
 
-List MakeEmpty()
+List link_list::MakeEmpty()
 {
     PtrToNode head = (PtrToNode)malloc(sizeof(struct Node));
     head->Next = nullptr;
@@ -17,7 +17,7 @@ List MakeEmpty()
 
 
 // 获得链表长度，-1代表不合法的空指针，合法范围0~无穷
-int GetLength( List L )
+int link_list::GetLength( List L )
 {
     if (L == nullptr)
     {
@@ -36,7 +36,7 @@ int GetLength( List L )
 
 
 // 因为指针类型是值拷贝，不会修改传入参数
-void Append( List L, ElementType X )
+void link_list::Append( List L, ElementType X )
 {
     if (L == nullptr)
     {
@@ -54,7 +54,7 @@ void Append( List L, ElementType X )
 }
 
 
-void PrintList( List L )
+void link_list::PrintList( List L )
 {
     if (L == nullptr) {
         abort();
@@ -67,12 +67,13 @@ void PrintList( List L )
         // 如果未到达最后元素
         if (L->Next->Next != nullptr)
             printf(" -> ");
+        L = L->Next;
     }
     printf("\n");
 }
 
 
-void DeleteList( List L )
+void link_list::DeleteList( List L )
 {
     if (L == nullptr)
         abort();
@@ -85,7 +86,7 @@ void DeleteList( List L )
 }
 
 
-bool IsEmpty( List L )
+bool link_list::IsEmpty( List L )
 {
     if (L == nullptr)
         abort();
@@ -96,7 +97,7 @@ bool IsEmpty( List L )
 }
 
 
-List ArrayToList(int an[], int length)
+List link_list::ArrayToList(int an[], int length)
 {
     List L = ::MakeEmpty();
     for (int i=0; i<length; ++i)
