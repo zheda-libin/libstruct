@@ -35,8 +35,6 @@ namespace link_list {
 
 //    bool Insert( List L, ElementType X, int i );
 //
-//    int IsLast(Position P, List L);
-//
 //    Position Find(ElementType X, List L);
 //
 //    void Delete( ElementType X, List L );
