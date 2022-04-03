@@ -32,6 +32,9 @@ int main(int argc, char *argv[])
     Insert(L, 43, GetLength(L));
     PrintList(L);
 
+    // 删除节点: 42 -> 4 -> 2 -> 5 -> 7 -> 1 -> -1 -> 43
+    Delete(L, 3);
+    PrintList(L);
 
     DeleteList(L);
 

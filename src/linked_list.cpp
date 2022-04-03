@@ -137,4 +137,37 @@ namespace link_list {
         L->Next = tmp;
     }
 
+
+    Position Find( List L, ElementType X )
+    {
+        while (L->Next)
+        {
+            if (L->Next->Element == X)
+                return L->Next;
+            L = L->Next;
+        }
+        return ERROR_CODE2;
+    }
+
+    // i有效范围，0 ~ N-1
+    // 但是，删除必须找到i-1那个节点，所以等效还是0 ~ N
+    void Delete( List L, int i )
+    {
+        int length = GetLength(L);
+        if (i<0 || i>length-1 || length == ERROR_CODE1)
+        {
+            printf("Invalid delete index.\n");
+            return;
+        }
+        // 寻找i-1那个点
+        int cnt = 0;
+        while(L && cnt<i)   // 出口条件cnt=i, 但因为cnt初始化为哨兵节点，所以实际上为i-1
+        {
+            L=L->Next;
+            ++cnt;
+        }
+        PtrToNode node = L->Next;
+        L->Next = node->Next;
+        free(node);
+    }
 }

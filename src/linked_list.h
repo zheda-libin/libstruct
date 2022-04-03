@@ -43,17 +43,9 @@ namespace link_list {
 
     void Insert( List L, ElementType X, int i );
 
-//    bool Insert( List L, ElementType X, int i );
-//
-//    Position Find(ElementType X, List L);
-//
-//    void Delete( ElementType X, List L );
-//
-//    Position FindPrevioous( ElementType X, List L );
-//
-//    Position Advance( Position P );
-//
-//    ElementType Retrieve( Position P );
+    Position Find( List L, ElementType X );
+
+    void Delete( List L, int i );
 
 }
 
