@@ -17,7 +17,7 @@ namespace link_list {
     // 获得链表长度，-1代表不合法的空指针，合法范围0~无穷
     int GetLength(List L) {
         if (L == nullptr) {
-            return -1;
+            return ERROR_CODE1;
         }
         int cnt = 0;
         // 如果带头结点，需要判断L->Next是否为nullptr
@@ -91,4 +91,50 @@ namespace link_list {
         }
         return L;
     }
+
+    // K的有效范围：0 ~ N-1
+    ElementType FindKth( List L, int K )
+    {
+        int length = GetLength(L);
+        // sanity check
+        if (K < 0 || K >length-1 || length == ERROR_CODE1)
+        {
+            printf("Invalid find position\n");
+            return ERROR_CODE1;
+        }
+        int cnt = 0;
+        // 因为上述已经sanity check过，所以不会出现L->Next为空指针情况
+        // 离开条件，cnt == K.
+        while(cnt < K)
+        {
+            L = L->Next;
+            ++cnt;
+        }
+        return L->Next->Element;
+    }
+
+    // 插入情况下，范围i：0 ~ N
+    void Insert( List L, ElementType X, int K )
+    {
+        int length = GetLength(L);
+        // sanity check
+        if (K<0 || K>length || length == ERROR_CODE1)
+        {
+            printf("Invalid insertion position\n");
+            return;
+        }
+
+        // 出口条件，cnt == K，K的范围0 ~ N (共N+1)
+        int cnt = 0;
+        while(cnt < K)
+        {
+            L=L->Next;
+            ++cnt;
+        }
+        PtrToNode tmp = (PtrToNode)malloc(sizeof(struct Node));
+        tmp->Element = X;
+        tmp->Next = L->Next;
+        L->Next = tmp;
+    }
+
 }

@@ -5,6 +5,12 @@
 #ifndef ALGORITHMC_LINKED_LIST_H
 #define ALGORITHMC_LINKED_LIST_H
 
+// ERROR_CODE定义：
+// * ERROR_CODE1 -- 查找不到元素，返回ElementType
+// * ERROR_CODE2 -- 查找不到元素，返回Position
+#define ERROR_CODE1 -10000
+#define ERROR_CODE2 nullptr
+
 namespace link_list {
 
     // 类型设计
@@ -31,7 +37,11 @@ namespace link_list {
 
     bool IsEmpty( List L );
 
-    List ArrayToList(int an[], int length);
+    List ArrayToList( int an[], int length );
+
+    ElementType FindKth( List L, int K );
+
+    void Insert( List L, ElementType X, int i );
 
 //    bool Insert( List L, ElementType X, int i );
 //
