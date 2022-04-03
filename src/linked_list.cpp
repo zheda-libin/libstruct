@@ -66,8 +66,9 @@ namespace link_list {
     void DeleteList(List L) {
         if (!L)
             abort();
-        while (L->Next) {
-            PtrToNode node = L;
+        PtrToNode node;
+        while (L) {
+            node = L;
             L = L->Next;
             free(node);
         }
