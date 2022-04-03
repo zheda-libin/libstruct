@@ -16,13 +16,13 @@ namespace link_list {
 
     // 获得链表长度，-1代表不合法的空指针，合法范围0~无穷
     int GetLength(List L) {
-        if (L == nullptr) {
+        if (!L) {
             return ERROR_CODE1;
         }
         int cnt = 0;
         // 如果带头结点，需要判断L->Next是否为nullptr
         // 如果不带头结点，需要判断L本身是否为nullptr
-        while (L->Next != nullptr) {
+        while (L->Next) {
             ++cnt;
             L = L->Next;
         }
@@ -32,14 +32,14 @@ namespace link_list {
 
     // 因为指针类型是值拷贝，不会修改传入参数
     void Append(List L, ElementType X) {
-        if (L == nullptr) {
+        if (!L) {
             printf("Invalid Linked List\n");
             abort();
         }
         PtrToNode node = (PtrToNode) malloc(sizeof(struct Node));
         node->Element = X;
         node->Next = nullptr;
-        while (L->Next != nullptr) {
+        while (L->Next) {
             L = L->Next;
         }
         L->Next = node;
@@ -47,15 +47,15 @@ namespace link_list {
 
 
     void PrintList(List L) {
-        if (L == nullptr) {
+        if (!L) {
             abort();
         }
 
         printf("[Length: %d] ", GetLength(L));
-        while (L->Next != nullptr) {
+        while (L->Next) {
             printf("%d", L->Next->Element);
             // 如果未到达最后元素
-            if (L->Next->Next != nullptr)
+            if (L->Next->Next)
                 printf(" -> ");
             L = L->Next;
         }
@@ -64,9 +64,9 @@ namespace link_list {
 
 
     void DeleteList(List L) {
-        if (L == nullptr)
+        if (!L)
             abort();
-        while (L->Next != nullptr) {
+        while (L->Next) {
             PtrToNode node = L;
             L = L->Next;
             free(node);
@@ -75,9 +75,9 @@ namespace link_list {
 
 
     bool IsEmpty(List L) {
-        if (L == nullptr)
+        if (!L)
             abort();
-        if (L->Next == nullptr)
+        if (!L->Next)
             return true;
         else
             return false;
