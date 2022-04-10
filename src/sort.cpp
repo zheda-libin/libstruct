@@ -2,9 +2,11 @@
 // Created by libin on 2022/4/9.
 //
 #include <cstdio>
+#include <cstdlib>
 #include "sort.h"
 
 namespace sort {
+    // 工具函数
     void WriteLine(int length) {
         for (int i = 0; i < length; ++i)
             printf("-");
@@ -19,7 +21,7 @@ namespace sort {
 
     void PrintArray(ElementType A[], int N) {
         for (int i = 0; i < N; ++i) {
-            printf("%d", A[i]);
+            printf("%2d", A[i]);
             if (i != N - 1)
                 printf(" -> ");
         }
@@ -28,7 +30,6 @@ namespace sort {
 
 
     // 排序算法
-
     void SelectSort(ElementType A[], int N, bool debug) {
         int i, j;
         int min;    // 最小值索引
@@ -204,6 +205,53 @@ namespace sort {
         }
     }
 
+
+    void MergeSort(ElementType A[], int N, bool debug)
+    {
+        ElementType * TmpA = (ElementType *)malloc(N * sizeof(ElementType));
+        MSort(A, TmpA, N, 0, N-1, debug);
+        free(TmpA);
+    }
+
+    void MSort(ElementType A[], ElementType TmpA[], int N, int L, int RightEnd, bool debug)
+    {
+        if (L < RightEnd)
+        {
+            int Center = (L+RightEnd)/2;
+            MSort(A, TmpA, N, L, Center, debug);
+            MSort(A, TmpA, N, Center+1, RightEnd, debug);
+            Merge(A, TmpA, L, Center+1, RightEnd);
+
+            if (debug) {
+                printf("[Left: %d  Right: %d]  ", L, RightEnd);
+                PrintArray(A, N);
+            }
+        }
+    }
+
+    void Merge(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd)
+    {
+        // 将有序的A[L]~A[R-1], A[R]~A[RightEnd]归并为有序序列
+        int cur = L;
+        int LeftEnd = R-1;
+        int NumElem = RightEnd - L + 1;
+
+        while(L<=LeftEnd && R<=RightEnd)
+        {
+            if (A[L] <= A[R])
+                TmpA[cur++] = A[L++];
+            else
+                TmpA[cur++] = A[R++];
+        }
+
+        while (L <= LeftEnd)
+            TmpA[cur++] = A[L++];
+        while (R <= RightEnd)
+            TmpA[cur++] = A[R++];
+
+        for(int i=0; i<NumElem; ++i)
+            A[RightEnd-i] = TmpA[RightEnd-i];
+    }
 
 }   // namespace sort
 

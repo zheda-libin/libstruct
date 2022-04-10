@@ -24,14 +24,20 @@ namespace sort {
 
     void BubbleSort(ElementType A[], int N, bool debug = false);
 
+    // int N这个参数没有必要，我是为了学习的必要才添加的
     void QuickSort_v1(ElementType A[], int N, bool debug = false);
 
-    // int N这个参数没有必要，我是为了学习的必要才添加的
     void QuickEngine_v1(ElementType A[], int Left, int Right, int N, bool debug);
 
     void QuickSort_v2(ElementType A[], int N, bool debug = false);
 
     void QuickEngine_v2(ElementType A[], int Left, int Right, int N, bool debug);
+
+    void MergeSort(ElementType A[], int N, bool debug=false);
+
+    void MSort(ElementType A[], ElementType TmpA[], int N, int L, int RightEnd, bool debug);
+
+    void Merge(ElementType A[], ElementType TmpA[], int L, int R, int RightEnd);
 }
 
 

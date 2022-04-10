@@ -7,14 +7,16 @@
 
 using namespace sort;
 
-#define LENGTH 6
-#define DEBUG
+#define LENGTH 10
+//#define DEBUG
 
 
 int main(int argc, char *argv[]) {
 
-    int A[LENGTH] = {32, 12, 7, 78, 23, 45};
-    int Ref[LENGTH] = {32, 12, 7, 78, 23, 45};
+    int A[LENGTH] = {32, 54, 37, 12, 7, 84, 14, 78, 23, 45};
+    int Ref[LENGTH] = {32, 54, 37, 12, 7, 84, 14, 78, 23, 45};
+
+
 
 
     // 1. SelectSort
@@ -32,6 +34,7 @@ int main(int argc, char *argv[]) {
     // ==============================================
     WriteLine();
     PrintArray(A, LENGTH);
+
 
 
 
@@ -54,6 +57,7 @@ int main(int argc, char *argv[]) {
 
 
 
+
     // 3. BubbleSort
     memcpy(A, Ref, LENGTH * sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
@@ -70,6 +74,7 @@ int main(int argc, char *argv[]) {
     // ==============================================
     WriteLine();
     PrintArray(A, LENGTH);
+
 
 
 
@@ -109,6 +114,25 @@ int main(int argc, char *argv[]) {
     WriteLine();
     PrintArray(A, LENGTH);
 
+
+
+
+    // 5. MergeSort
+    memcpy(A, Ref, LENGTH * sizeof(ElementType));
+    printf("\n\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("MergeSort Array:\n");
+#ifdef DEBUG
+    MergeSort(A, LENGTH, true);
+#else
+    MergeSort(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
 
     return 0;
 }
