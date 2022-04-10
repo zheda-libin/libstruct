@@ -6,25 +6,51 @@
 #include "sort.h"
 using namespace sort;
 
+#define LENGTH 7
+//#define DEBUG
+
 
 int main(int argc, char *argv[])
 {
-    printf("Original Array:\n");
-    int A[7] = {7, 6, 3, 4, 2, 5, 1};
-    int Ref[7] = {7, 6, 3, 4, 2, 5, 1};
-    int len = 7;
-    PrintArray(A, len);
+
+    int A[LENGTH] = {7, 6, 3, 4, 2, 5, 1};
+    int Ref[LENGTH] = {7, 6, 3, 4, 2, 5, 1};
+
 
     // 1. SelectSort
-    printf("\nSelectSort Array:\n");
-    SelectSort(A, len);
-    PrintArray(A, len);
+    printf("\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("SelectSort Array:\n");
+#ifdef DEBUG
+    SelectSort(A, LENGTH, true);
+#else
+    SelectSort(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
+
+
 
     // 2. InsertSort
-    printf("\nInsertSort Array:\n");
-    memcpy(A, Ref, len*sizeof(ElementType));
-    InsertSort(A, len);
-    PrintArray(A, len);
+    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    printf("\n\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("InsertSort Array:\n");
+#ifdef DEBUG
+    InsertSort(A, LENGTH, true);
+#else
+    InsertSort(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
 
 
     return 0;

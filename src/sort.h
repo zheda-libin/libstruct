@@ -10,6 +10,7 @@ namespace sort {
     typedef int ElementType;
 
     // 工具函数
+    void WriteLine(int length=40);
 
     void Swap(ElementType & a, ElementType & b);
 
@@ -17,9 +18,9 @@ namespace sort {
 
     // 排序算法（假设所有的排序都是从小到大）
 
-    void SelectSort(ElementType A[], int N);
+    void SelectSort(ElementType A[], int N, bool debug=false);
 
-    void InsertSort(ElementType A[], int N);
+    void InsertSort(ElementType A[], int N, bool debug=false);
 }
 
 
