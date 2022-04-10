@@ -6,15 +6,15 @@
 #include "sort.h"
 using namespace sort;
 
-#define LENGTH 7
+#define LENGTH 9
 //#define DEBUG
 
 
 int main(int argc, char *argv[])
 {
 
-    int A[LENGTH] = {7, 6, 3, 4, 2, 5, 1};
-    int Ref[LENGTH] = {7, 6, 3, 4, 2, 5, 1};
+    int A[LENGTH] = {4, 7, 6, 5, 3, 2, 8, 4,1};
+    int Ref[LENGTH] = {4, 7, 6, 5, 3, 2, 8, 4, 1};
 
 
     // 1. SelectSort
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 
 
 
-    // 2. BubbleSort
+    // 3. BubbleSort
     memcpy(A, Ref, LENGTH*sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
     PrintArray(A, LENGTH);
@@ -65,6 +65,44 @@ int main(int argc, char *argv[])
     BubbleSort(A, LENGTH, true);
 #else
     BubbleSort(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
+
+
+
+    // 4.1. QuickSort v1
+    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    printf("\n\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("QuickSort v1 Array:\n");
+#ifdef DEBUG
+    QuickSort_v1(A, LENGTH, true);
+#else
+    QuickSort_v1(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
+
+
+
+    // 4.2. QuickSort v2
+    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    printf("\n\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("QuickSort v2 Array:\n");
+#ifdef DEBUG
+    QuickSort_v2(A, LENGTH, true);
+#else
+    QuickSort_v2(A, LENGTH);
 #endif
 
     // ==============================================

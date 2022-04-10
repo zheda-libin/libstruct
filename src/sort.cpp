@@ -114,5 +114,111 @@ namespace sort {
     }
 
 
+    void QuickSort_v1(ElementType A[], int N, bool debug)
+    {
+        QuickEngine_v1(A, 0, N-1, N, debug);
+    }
+
+    // 第一版，严蔚敏版本，交替双指针
+    void QuickEngine_v1(ElementType A[], int Left, int Right, int N, bool debug)
+    {
+        if (Left < Right)   // 先决条件是，待处理序列至少是2个数，才有处理的价值
+        {
+            // 选主元
+            ElementType pivot = A[Left];
+            int low = Left, high = Right;
+            if (debug) {
+                printf("\nPivot: A[%d]=%d   Left: %d   Right: %d\n", low, A[low], Left, Right);
+                printf("Original:                ");
+                PrintArray(A, N);
+            }
+
+            // 交替指针，一定会出现low == high的情况
+            while(low < high)
+            {
+                // 右指针起手，卡住就换左指针
+                while(low<high && A[high]>=pivot)
+                    --high;
+                A[low] = A[high];
+                if (debug) {
+                    printf("[low=%d,  high=%d, RIGHT]  ", low, high);
+                    PrintArray(A, N);
+                }
+
+
+                // 左指针接力
+                while(low<high && A[low]<=pivot)
+                    ++low;
+                A[high]=A[low];
+                if (debug) {
+                    printf("[low=%d,  high=%d, LEFT ]  ", low, high);
+                    PrintArray(A, N);
+                }
+
+            }
+            A[low] = pivot;
+            if (debug) {
+                printf("[low=%d,  high=%d, END  ]  ", low, high);
+                PrintArray(A, N);
+            }
+
+            // 递归
+            QuickEngine_v1(A, Left, low-1, N, debug);
+            QuickEngine_v1(A, low+1, Right, N, debug);
+        }
+    }
+
+
+    void QuickSort_v2(ElementType A[], int N, bool debug)
+    {
+        QuickEngine_v2(A, 0, N-1, N, debug);
+    }
+
+    void QuickEngine_v2(ElementType A[], int Left, int Right, int N, bool debug)
+    {
+        if (Left < Right)   // 先决条件是，待处理序列至少是2个数，才有处理的价值
+        {
+            // 选主元
+            ElementType pivot = A[Left];
+            int low = Left+1, high = Right;
+            if (debug) {
+                printf("\nPivot: A[%d]=%d   Left: %d   Right: %d\n", Left, pivot, Left, Right);
+                printf("Original:                ");
+                PrintArray(A, N);
+            }
+
+            // 两个指针都要移动，所以两种情况low == high, low > high
+            while(1)
+            {
+                // 典型的双指针打法
+                while(A[low] < pivot)       // 左指针起手
+                    ++low;
+                while(A[high] > pivot)      // 右指针接力
+                    --high;
+
+                if (low < high)
+                {
+                    Swap(A[low++], A[high--]);
+                    if (debug) {
+                        printf("[low=%d,  high=%d, ONGO ]  ", low, high);
+                        PrintArray(A, N);
+                    }
+                }
+                else
+                    break;
+            }
+            Swap(A[Left], A[high]);
+            if (debug) {
+                printf("[low=%d,  high=%d, END  ]  ", low, high);
+                PrintArray(A, N);
+            }
+
+            // 递归
+            QuickEngine_v2(A, Left, high-1, N, debug);
+            QuickEngine_v2(A, high+1, Right, N, debug);
+        }
+    }
+
+
 }   // namespace sort
 
