@@ -53,5 +53,24 @@ int main(int argc, char *argv[])
     PrintArray(A, LENGTH);
 
 
+
+    // 2. BubbleSort
+    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    printf("\n\n\nOriginal Array:\n");
+    PrintArray(A, LENGTH);
+
+    // ==============================================
+    printf("BubbleSort Array:\n");
+#ifdef DEBUG
+    BubbleSort(A, LENGTH, true);
+#else
+    BubbleSort(A, LENGTH);
+#endif
+
+    // ==============================================
+    WriteLine();
+    PrintArray(A, LENGTH);
+
+
     return 0;
 }

@@ -21,6 +21,8 @@ namespace sort {
     void SelectSort(ElementType A[], int N, bool debug=false);
 
     void InsertSort(ElementType A[], int N, bool debug=false);
+
+    void BubbleSort(ElementType A[], int N, bool debug=false);
 }
 
 

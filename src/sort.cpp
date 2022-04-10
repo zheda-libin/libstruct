@@ -36,6 +36,9 @@ namespace sort {
         int min;    // 最小值索引
         // 外层循环，仅需要N-1趟
         for (i = 0; i < N - 1; ++i) {
+            if (debug)
+                printf("[%d]\n", i);
+
             min = i;    // 初始化最小值索引（认为每趟的A[i]为最小值
 
             // 内层循环，从i+1开始至结束
@@ -47,10 +50,7 @@ namespace sort {
             Swap(A[i], A[min]);
 
             if (debug)
-            {
-                printf("[%d]\n", i);
                 PrintArray(A, N);
-            }
         }
     }
 
@@ -61,7 +61,7 @@ namespace sort {
         // 外循环N-1趟，从1到N-1
         for (int i=1; i<N; ++i){
             if (debug)
-                printf("[%d]\n", i);
+                printf("[%d]\n", i-1);
 
             tmp = A[i];     // 未排序序列第一个元素（待处理）
 
@@ -78,6 +78,35 @@ namespace sort {
             // 情况1: j=-1, tmp比所有已排序序列都小，理应插在A[0]
             // 情况2: tmp>=A[j], 应该查到A[j+1]
             A[j+1] = tmp;
+
+            if (debug)
+                PrintArray(A, N);
+        }
+    }
+
+
+    void BubbleSort(ElementType A[], int N, bool debug)
+    {
+        bool flag;
+        int i, P;
+        // 外层循环，右范围
+        for (P=N-1; P>0; --P)
+        {
+            if (debug)
+                printf("[%d]\n", N-1-P);
+
+            flag = true;
+            // 内层循环，[0, P-1], 实际处理范围，[0, P]
+            for(i=0; i<P; ++i)
+            {
+                if (A[i] > A[i+1])
+                {
+                    Swap(A[i], A[i+1]);
+                    flag = false;
+                }
+            }
+            if (flag)
+                break;
 
             if (debug)
                 PrintArray(A, N);
