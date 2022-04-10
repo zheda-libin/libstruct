@@ -8,7 +8,7 @@
 using namespace sort;
 
 #define LENGTH 10
-//#define DEBUG
+#define DEBUG
 
 
 int main(int argc, char *argv[]) {
