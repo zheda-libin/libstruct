@@ -7,11 +7,10 @@
 
 #define ERROR_CODE1 -9999
 
-namespace link_stack
-{
+namespace link_stack {
     typedef int ElementType;
     struct SNode;
-    typedef struct SNode * PtrToSNode;
+    typedef struct SNode *PtrToSNode;
     struct SNode {
         ElementType Data;
         PtrToSNode Next;
@@ -20,15 +19,15 @@ namespace link_stack
 
     Stack MakeEmpty();
 
-    bool IsEmpty( Stack S );
+    bool IsEmpty(Stack S);
 
-    bool Push( Stack S, ElementType X );
+    bool Push(Stack S, ElementType X);
 
-    ElementType Pop( Stack S );
+    ElementType Pop(Stack S);
 
-    void PrintStack( Stack S );
+    void PrintStack(Stack S);
 
-    void DeleteStack( Stack S );
+    void DeleteStack(Stack S);
 }
 
 

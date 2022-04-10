@@ -4,17 +4,17 @@
 #include <cstdio>
 #include <cstring>
 #include "sort.h"
+
 using namespace sort;
 
-#define LENGTH 9
-//#define DEBUG
+#define LENGTH 6
+#define DEBUG
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 
-    int A[LENGTH] = {4, 7, 6, 5, 3, 2, 8, 4,1};
-    int Ref[LENGTH] = {4, 7, 6, 5, 3, 2, 8, 4, 1};
+    int A[LENGTH] = {32, 12, 7, 78, 23, 45};
+    int Ref[LENGTH] = {32, 12, 7, 78, 23, 45};
 
 
     // 1. SelectSort
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
 
     // 2. InsertSort
-    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    memcpy(A, Ref, LENGTH * sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
     PrintArray(A, LENGTH);
 
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 
 
     // 3. BubbleSort
-    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    memcpy(A, Ref, LENGTH * sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
     PrintArray(A, LENGTH);
 
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 
 
     // 4.1. QuickSort v1
-    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    memcpy(A, Ref, LENGTH * sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
     PrintArray(A, LENGTH);
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 
 
     // 4.2. QuickSort v2
-    memcpy(A, Ref, LENGTH*sizeof(ElementType));
+    memcpy(A, Ref, LENGTH * sizeof(ElementType));
     printf("\n\n\nOriginal Array:\n");
     PrintArray(A, LENGTH);
 

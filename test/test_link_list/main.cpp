@@ -3,11 +3,11 @@
 //
 #include <cstdio>
 #include "linked_list.h"
+
 using namespace link_list;
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int an[6] = {4, 2, 8, 5, 7, 1};
     int length = 6;
 

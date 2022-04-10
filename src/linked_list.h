@@ -17,9 +17,9 @@ namespace link_list {
     typedef int ElementType;
     struct Node {
         ElementType Element;
-        struct Node * Next;
+        struct Node *Next;
     };
-    typedef struct Node * PtrToNode;
+    typedef struct Node *PtrToNode;
     typedef PtrToNode List;
     typedef PtrToNode Position;
 
@@ -27,25 +27,25 @@ namespace link_list {
     // 说明：下面的函数实现均默认为有头结点(sentinel node)
     List MakeEmpty();
 
-    int GetLength( List L );
+    int GetLength(List L);
 
-    void Append( List L, ElementType X );
+    void Append(List L, ElementType X);
 
-    void PrintList( List L );
+    void PrintList(List L);
 
-    void DeleteList( List L );
+    void DeleteList(List L);
 
-    bool IsEmpty( List L );
+    bool IsEmpty(List L);
 
-    List ArrayToList( int an[], int length );
+    List ArrayToList(int an[], int length);
 
-    ElementType FindKth( List L, int K );
+    ElementType FindKth(List L, int K);
 
-    void Insert( List L, ElementType X, int i );
+    void Insert(List L, ElementType X, int i);
 
-    Position Find( List L, ElementType X );
+    Position Find(List L, ElementType X);
 
-    void Delete( List L, int i );
+    void Delete(List L, int i);
 
 }
 

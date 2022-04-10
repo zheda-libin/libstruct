@@ -3,12 +3,11 @@
 //
 #include <cstdio>
 #include "binary_tree.h"
+
 using namespace binary_tree;
 
 
-
-void test1()
-{
+void test1() {
     BinTree node1 = CreateBTNode(6);
     BinTree node2 = CreateBTNode(2);
     BinTree node3 = CreateBTNode(7);
@@ -43,8 +42,7 @@ void test1()
 }
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     test1();
     return 0;
 }

@@ -3,11 +3,11 @@
 //
 #include <cstdio>
 #include "linked_stack.h"
+
 using namespace link_stack;
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     Stack S = MakeEmpty();
     // Steven chou, 9527
     Push(S, 9);

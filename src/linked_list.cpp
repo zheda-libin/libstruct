@@ -94,20 +94,17 @@ namespace link_list {
     }
 
     // K的有效范围：0 ~ N-1
-    ElementType FindKth( List L, int K )
-    {
+    ElementType FindKth(List L, int K) {
         int length = GetLength(L);
         // sanity check
-        if (K < 0 || K >length-1 || length == ERROR_CODE1)
-        {
+        if (K < 0 || K > length - 1 || length == ERROR_CODE1) {
             printf("Invalid find position\n");
             return ERROR_CODE1;
         }
         int cnt = 0;
         // 因为上述已经sanity check过，所以不会出现L->Next为空指针情况
         // 离开条件，cnt == K.
-        while(cnt < K)
-        {
+        while (cnt < K) {
             L = L->Next;
             ++cnt;
         }
@@ -115,34 +112,29 @@ namespace link_list {
     }
 
     // 插入情况下，范围i：0 ~ N
-    void Insert( List L, ElementType X, int K )
-    {
+    void Insert(List L, ElementType X, int K) {
         int length = GetLength(L);
         // sanity check
-        if (K<0 || K>length || length == ERROR_CODE1)
-        {
+        if (K < 0 || K > length || length == ERROR_CODE1) {
             printf("Invalid insertion position\n");
             return;
         }
 
         // 出口条件，cnt == K，K的范围0 ~ N (共N+1)
         int cnt = 0;
-        while(cnt < K)
-        {
-            L=L->Next;
+        while (cnt < K) {
+            L = L->Next;
             ++cnt;
         }
-        PtrToNode tmp = (PtrToNode)malloc(sizeof(struct Node));
+        PtrToNode tmp = (PtrToNode) malloc(sizeof(struct Node));
         tmp->Element = X;
         tmp->Next = L->Next;
         L->Next = tmp;
     }
 
 
-    Position Find( List L, ElementType X )
-    {
-        while (L->Next)
-        {
+    Position Find(List L, ElementType X) {
+        while (L->Next) {
             if (L->Next->Element == X)
                 return L->Next;
             L = L->Next;
@@ -152,19 +144,17 @@ namespace link_list {
 
     // i有效范围，0 ~ N-1
     // 但是，删除必须找到i-1那个节点，所以等效还是0 ~ N
-    void Delete( List L, int i )
-    {
+    void Delete(List L, int i) {
         int length = GetLength(L);
-        if (i<0 || i>length-1 || length == ERROR_CODE1)
-        {
+        if (i < 0 || i > length - 1 || length == ERROR_CODE1) {
             printf("Invalid delete index.\n");
             return;
         }
         // 寻找i-1那个点
         int cnt = 0;
-        while(L && cnt<i)   // 出口条件cnt=i, 但因为cnt初始化为哨兵节点，所以实际上为i-1
+        while (L && cnt < i)   // 出口条件cnt=i, 但因为cnt初始化为哨兵节点，所以实际上为i-1
         {
-            L=L->Next;
+            L = L->Next;
             ++cnt;
         }
         PtrToNode node = L->Next;
